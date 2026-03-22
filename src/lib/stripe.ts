@@ -38,7 +38,7 @@ export const PRICING_PLANS = [
       'Priority support',
     ],
     highlighted: true,
-    stripePriceId: 'price_pro_monthly',
+    stripePriceId: import.meta.env.VITE_STRIPE_PRO_PRICE_ID || 'price_pro_monthly',
   },
   {
     id: 'business' as const,
@@ -56,6 +56,6 @@ export const PRICING_PLANS = [
       'Dedicated support',
     ],
     highlighted: false,
-    stripePriceId: 'price_business_monthly',
+    stripePriceId: import.meta.env.VITE_STRIPE_BUSINESS_PRICE_ID || 'price_business_monthly',
   },
 ]
