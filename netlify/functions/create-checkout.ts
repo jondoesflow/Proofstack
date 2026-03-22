@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2024-10-28.acacia',
 })
 
-const APP_URL = process.env.URL ?? 'https://proofstack.app'
+const APP_URL = process.env.URL ?? 'https://proofstack-app.netlify.app'
 
 export const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') {

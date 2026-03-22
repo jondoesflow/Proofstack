@@ -464,7 +464,7 @@ export function LandingPage() {
             <div className="text-center mt-10">
               <p className="text-gray-500 text-sm">
                 Still have questions?{' '}
-                <a href="mailto:hello@proofstack.app" className="text-primary-600 hover:underline font-medium">
+                <a href="mailto:hello@proofstack-app.netlify.app" className="text-primary-600 hover:underline font-medium">
                   Email us anytime
                 </a>
               </p>

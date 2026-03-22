@@ -258,7 +258,7 @@ export function WallPage() {
         {!isPro && (
           <footer className={['py-6 text-center border-t', isDark ? 'border-gray-800' : 'border-gray-200'].join(' ')}>
             <a
-              href="https://proofstack.app"
+              href="https://proofstack-app.netlify.app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-gray-400 hover:text-primary-600 transition-colors"

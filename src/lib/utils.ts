@@ -42,7 +42,7 @@ export function getInitials(name: string): string {
  * Get the app base URL
  */
 export function getAppUrl(): string {
-  return import.meta.env.VITE_APP_URL || 'https://proofstack.app'
+  return import.meta.env.VITE_APP_URL || 'https://proofstack-app.netlify.app'
 }
 
 /**

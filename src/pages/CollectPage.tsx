@@ -148,7 +148,7 @@ export function CollectPage() {
           </div>
           <p className="text-xs text-gray-400 mt-8">
             Powered by{' '}
-            <a href="https://proofstack.app" className="text-primary-600 hover:underline">ProofStack</a>
+            <a href="https://proofstack-app.netlify.app" className="text-primary-600 hover:underline">ProofStack</a>
           </p>
         </div>
       </div>
@@ -297,7 +297,7 @@ export function CollectPage() {
 
           <p className="text-center text-xs text-gray-400 mt-6">
             Powered by{' '}
-            <a href="https://proofstack.app" className="text-primary-600 hover:underline">ProofStack</a>
+            <a href="https://proofstack-app.netlify.app" className="text-primary-600 hover:underline">ProofStack</a>
             {' '}· Your data is handled in accordance with GDPR
           </p>
         </div>

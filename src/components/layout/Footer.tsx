@@ -67,7 +67,7 @@ export function Footer() {
                 { label: 'About', href: '/about' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Changelog', href: '/changelog' },
-                { label: 'Contact', href: 'mailto:hello@proofstack.app' },
+                { label: 'Contact', href: 'mailto:hello@proofstack-app.netlify.app' },
               ].map((item) => (
                 <li key={item.label}>
                   <a
