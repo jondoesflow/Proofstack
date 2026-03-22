@@ -218,10 +218,9 @@ export function DashboardPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Preview collection form (opens in new tab)"
+                className="inline-flex items-center justify-center font-medium rounded-lg px-3 py-1.5 text-sm border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
               >
-                <Button size="sm" variant="outline">
-                  Preview ↗
-                </Button>
+                Preview ↗
               </a>
             </div>
           </div>

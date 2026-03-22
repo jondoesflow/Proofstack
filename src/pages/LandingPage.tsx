@@ -2,95 +2,46 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar } from '../components/layout/Navbar'
 import { Footer } from '../components/layout/Footer'
-import { StarRating } from '../components/ui/StarRating'
 import { Button } from '../components/ui/Button'
 import { PRICING_PLANS } from '../lib/stripe'
 
-// ─── Fake demo testimonials ────────────────────────────────────────────
+// ─── Demo testimonials to show what a wall looks like ────────────────
 const DEMO_TESTIMONIALS = [
   {
     id: '1',
-    name: 'Sarah Mitchell',
-    role: 'Founder',
-    company: 'Bloom Studio',
-    testimonialText: 'Working with Alex was a total game-changer. Our new website increased conversions by 40% in the first month. I can\'t recommend them enough!',
-    rating: 5,
-    initials: 'SM',
+    initials: 'JD',
     color: 'bg-pink-100 text-pink-700',
+    lines: 3,
   },
   {
     id: '2',
-    name: 'Tom Henderson',
-    role: 'Head of Engineering',
-    company: 'NovaTech',
-    testimonialText: 'Exceptional technical expertise and communication throughout. Delivered a complex API integration on time and under budget.',
-    rating: 5,
-    initials: 'TH',
+    initials: 'AK',
     color: 'bg-blue-100 text-blue-700',
+    lines: 2,
   },
   {
     id: '3',
-    name: 'Priya Sharma',
-    role: 'Marketing Director',
-    company: 'Spark Agency',
-    testimonialText: 'The rebrand they created for us perfectly captured our vision. Professional, creative, and incredibly responsive. Five stars easily.',
-    rating: 5,
-    initials: 'PS',
+    initials: 'RW',
     color: 'bg-purple-100 text-purple-700',
+    lines: 4,
   },
   {
     id: '4',
-    name: 'James Okafor',
-    role: 'CEO',
-    company: 'BuildRight',
-    testimonialText: 'I\'ve hired many freelancers over the years. This was by far the smoothest experience. Clear communication, quality work, on-time delivery.',
-    rating: 5,
-    initials: 'JO',
+    initials: 'LS',
     color: 'bg-green-100 text-green-700',
+    lines: 2,
   },
   {
     id: '5',
-    name: 'Emma Clarke',
-    role: 'Product Manager',
-    company: 'Finflow',
-    testimonialText: 'Absolutely transformed our onboarding flow. User drop-off reduced by 60%. Worth every penny and then some.',
-    rating: 5,
-    initials: 'EC',
+    initials: 'NP',
     color: 'bg-orange-100 text-orange-700',
+    lines: 3,
   },
   {
     id: '6',
-    name: 'David Park',
-    role: 'Creative Director',
-    company: 'Pixel & Co',
-    testimonialText: 'Rarely do you find someone who combines technical skill with genuine creative flair. A true professional who goes above and beyond.',
-    rating: 5,
-    initials: 'DP',
+    initials: 'TM',
     color: 'bg-teal-100 text-teal-700',
-  },
-]
-
-const PROOFSTACK_TESTIMONIALS = [
-  {
-    name: 'Chris Lawson',
-    role: 'Freelance Designer',
-    text: 'ProofStack paid for itself within a week. Two new clients mentioned my testimonial wall as the reason they reached out.',
-    rating: 5,
-    initials: 'CL',
-  },
-  {
-    name: 'Aisha Bangura',
-    role: 'SEO Consultant',
-    text: 'Incredibly easy to set up. My clients actually enjoy filling in the form, and the wall looks stunning on my site.',
-    rating: 5,
-    initials: 'AB',
-  },
-  {
-    name: 'Marcus Webb',
-    role: 'Developer & Agency Owner',
-    text: 'We use ProofStack for all 12 of our client sites now. The Business plan is fantastic value and the support is excellent.',
-    rating: 5,
-    initials: 'MW',
+    lines: 3,
   },
 ]
 
@@ -168,7 +119,7 @@ export function LandingPage() {
           <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-8 backdrop-blur-sm">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" aria-hidden="true" />
-              Trusted by 2,400+ freelancers &amp; founders
+              Now in early access — free to get started
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6">
@@ -203,15 +154,15 @@ export function LandingPage() {
           </div>
         </section>
 
-        {/* ── Stats bar ── */}
-        <section className="bg-white border-b border-gray-100" aria-label="Key statistics">
+        {/* ── Value props bar ── */}
+        <section className="bg-white border-b border-gray-100" aria-label="Key benefits">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
               {[
-                { value: '2,400+', label: 'Testimonials collected' },
-                { value: '98%', label: 'Approval rate' },
-                { value: '40%', label: 'Avg conversion lift' },
-                { value: '< 2 min', label: 'To get your first testimonial' },
+                { value: 'Free', label: 'To get started' },
+                { value: '< 2 min', label: 'Setup time' },
+                { value: '1‑click', label: 'Embed on your site' },
+                { value: '100%', label: 'You own your data' },
               ].map((stat) => (
                 <div key={stat.label}>
                   <dt className="text-2xl sm:text-3xl font-extrabold text-primary-600">{stat.value}</dt>
@@ -299,25 +250,30 @@ export function LandingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {DEMO_TESTIMONIALS.map((t) => (
-                <article
+                <div
                   key={t.id}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-                  aria-label={`Testimonial from ${t.name}`}
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
                 >
-                  <StarRating value={t.rating} readonly size="sm" />
-                  <blockquote className="mt-4 text-sm text-gray-600 leading-relaxed">
-                    "{t.testimonialText}"
-                  </blockquote>
-                  <footer className="mt-5 flex items-center gap-3 pt-4 border-t border-gray-50">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="w-4 h-4 rounded bg-yellow-200" />
+                    ))}
+                  </div>
+                  <div className="mt-4 space-y-2">
+                    {[...Array(t.lines)].map((_, i) => (
+                      <div key={i} className={`h-3 rounded bg-gray-100 ${i === t.lines - 1 ? 'w-2/3' : 'w-full'}`} />
+                    ))}
+                  </div>
+                  <div className="mt-5 flex items-center gap-3 pt-4 border-t border-gray-50">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold flex-shrink-0 ${t.color}`}>
                       {t.initials}
                     </div>
-                    <div>
-                      <p className="font-semibold text-sm text-gray-900">{t.name}</p>
-                      <p className="text-xs text-gray-500">{t.role} @ {t.company}</p>
+                    <div className="space-y-1.5">
+                      <div className="h-3 w-20 rounded bg-gray-200" />
+                      <div className="h-2.5 w-16 rounded bg-gray-100" />
                     </div>
-                  </footer>
-                </article>
+                  </div>
+                </div>
               ))}
             </div>
 
@@ -415,34 +371,25 @@ export function LandingPage() {
           </div>
         </section>
 
-        {/* ── Loved by freelancers ── */}
-        <section className="py-24 bg-gray-50" aria-labelledby="social-proof-heading">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <p className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-3">Don't take our word for it</p>
-              <h2 id="social-proof-heading" className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-                Loved by freelancers &amp; founders
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {PROOFSTACK_TESTIMONIALS.map((t) => (
-                <article
-                  key={t.name}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
-                >
-                  <StarRating value={t.rating} readonly size="sm" />
-                  <blockquote className="mt-4 text-sm text-gray-600 leading-relaxed">"{t.text}"</blockquote>
-                  <footer className="mt-5 flex items-center gap-3 pt-4 border-t border-gray-50">
-                    <div className="w-9 h-9 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-xs font-bold flex-shrink-0">
-                      {t.initials}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-sm text-gray-900">{t.name}</p>
-                      <p className="text-xs text-gray-500">{t.role}</p>
-                    </div>
-                  </footer>
-                </article>
-              ))}
+        {/* ── Early access ── */}
+        <section className="py-24 bg-gray-50" aria-labelledby="early-access-heading">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-sm font-semibold text-primary-600 uppercase tracking-wider mb-3">Early access</p>
+            <h2 id="early-access-heading" className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              We're just getting started
+            </h2>
+            <p className="mt-4 text-gray-500 max-w-xl mx-auto leading-relaxed">
+              ProofStack is brand new and we're building in public. Sign up today, lock in your free plan, and help shape the product with your feedback.
+            </p>
+            <div className="mt-8">
+              <Link to="/login?mode=signup">
+                <Button size="lg">
+                  Join the early adopters
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -479,7 +426,7 @@ export function LandingPage() {
               Ready to turn your clients into advocates?
             </h2>
             <p className="text-primary-200 text-lg mb-10">
-              Join thousands of freelancers and founders collecting testimonials that actually convert.
+              Start collecting testimonials that actually convert — free, no credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/login?mode=signup">
