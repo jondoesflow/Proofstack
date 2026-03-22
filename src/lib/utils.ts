@@ -42,6 +42,9 @@ export function getInitials(name: string): string {
  * Get the app base URL
  */
 export function getAppUrl(): string {
+  if (typeof window !== 'undefined') {
+    return window.location.origin
+  }
   return import.meta.env.VITE_APP_URL || 'https://proofstack.app'
 }
 
