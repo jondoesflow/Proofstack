@@ -8,7 +8,10 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint src --ext ts,tsx"
+    "lint": "eslint src --ext ts,tsx",
+    "test:e2e": "npx playwright test",
+    "test:e2e:dev": "npx playwright test --project=dev",
+    "test:e2e:prod": "npx playwright test --project=prod"
   },
   "dependencies": {
     "@stripe/stripe-js": "^4.0.0",
@@ -20,6 +23,7 @@
     "stripe": "^20.4.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@types/react": "^18.3.12",
